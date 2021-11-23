@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone repo') {
             steps {
-                git url: 'https://github.com/bocunha/jenkins_pipeline.git', branch: 'main'
+                git url: 'https://github.com/bocunha/grupo-one-ami.git', branch: 'main'
             }
         }
         stage('Build EC2') {
