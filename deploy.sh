@@ -1,4 +1,5 @@
 #!/bin/bash
+CHAVESSH="~/.ssh/grupo-one.pem"
 
 cd ./terraform
 terraform init
@@ -15,5 +16,5 @@ sleep 10 # 10 segundos
 
 cd ../ansible
 
-echo "Executando ansible ::::: [ ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key ~/.ssh/grupo-one.pem ]"
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key ~/.ssh/grupo-one.pem
+echo "Executando ansible ::::: [ ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key ${CHAVESSH} ]"
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key ${CHAVESSH}
