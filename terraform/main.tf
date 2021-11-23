@@ -2,13 +2,17 @@ provider "aws" {
   region = "sa-east-1"
 }
 
+locals {
+  date = "${formatdate("hhmmss", timestamp())}"
+}
+
 resource "aws_instance" "dev_img_deploy_jenkins" {
   subnet_id     = "subnet-0958c1cc0f3c9b493"
   ami                         = "ami-0e66f5495b4efdd0f" #ubuntu
   instance_type = "t2.micro"
   key_name = "grupo-one"
   tags = {
-    Name = "one-imgpadrao-ec2-k8s"
+    Name = "one-imgpadrao-ec2-k8s_${local.date}"
     Owner = "grupo-one"
   }
     associate_public_ip_address = true
@@ -20,7 +24,7 @@ resource "aws_instance" "dev_img_deploy_jenkins" {
 }
 
 resource "aws_security_group" "acesso_jenkins_dev_img" {
-  name        = "acesso_jenkins_dev_img"
+  name        = "acesso_jenkins_dev_img_${local.date}"
   description = "acesso_jenkins_dev_img inbound traffic"
   vpc_id      = "vpc-063c0ac3627af3dba"
 
@@ -65,6 +69,7 @@ resource "aws_security_group" "acesso_jenkins_dev_img" {
 
   tags = {
     Name = "jenkins-dev-img-lab"
+    Owner = "gropo-one"
   }
 }
 
