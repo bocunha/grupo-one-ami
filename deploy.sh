@@ -1,6 +1,6 @@
 #!/bin/bash
 #CHAVESSH="~/.ssh/grupo-one.pem"
-CHAVESSH="/var/lib/jenkis/.ssh/grupo-one.pem"
+CHAVESSH="/var/lib/jenkins/.ssh/grupo-one.pem"
 
 cd ./terraform
 terraform init
