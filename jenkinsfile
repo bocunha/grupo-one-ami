@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone repo') {
+            steps {
+                git url: 'https://github.com/bocunha/jenkins_pipeline.git', branch: 'main'
+            }
+        }
+        stage('Build EC2') {
+            steps {
+                sh "./deploy.sh"
+            }
+        }
+        stage('Test Nginx') {
+            steps {
+                sh "./test.sh"
+            }
+        }
+        stage('Build AMI') {
+            steps {
+                sh "./package-ami.sh"
+            }
+        }
+        stage('Destroy Test EC2') {
+            steps {
+                sh "./destroy.sh"
+            }
+        }
+    }
+}
