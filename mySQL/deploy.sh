@@ -12,7 +12,7 @@ echo "Aguardando criação de maquinas ..."
 
 
 ID_M1=$(terraform output | grep 'mysql_prod' | awk '{print $4}')
-ID_M1_DNS=$(terraform output | grep 'mysql_prod' | cut -b 8-)
+ID_M1_DNS=$(terraform)
 
 ID_M2=$(terraform output | grep 'mysql_dev' | awk '{print $4}')
 ID_M2_DNS=$(terraform output | grep 'mysql_dev' | awk '{print $9}' | cut -b 8-)
